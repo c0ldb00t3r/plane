@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { isEmpty } from "lodash-es";
-import Link from "next/link";
+import { Link } from "react-router";
 import { useForm } from "react-hook-form";
 // plane internal packages
 import { API_BASE_URL } from "@plane/constants";
@@ -185,7 +185,7 @@ export const InstanceGitlabConfigForm: FC<Props> = (props) => {
                   {isSubmitting ? "Saving..." : "Save changes"}
                 </Button>
                 <Link
-                  href="/authentication"
+                  to="/authentication"
                   className={cn(getButtonStyling("neutral-primary", "md"), "font-medium")}
                   onClick={handleGoBack}
                 >

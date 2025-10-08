@@ -2,7 +2,7 @@
 
 import { FC, ReactNode, useEffect } from "react";
 import { observer } from "mobx-react";
-import { useRouter } from "next/navigation";
+import { useNavigate } from "react-router";
 // components
 import { LogoSpinner } from "@/components/common/logo-spinner";
 import { NewUserPopup } from "@/components/new-user-popup";
@@ -19,15 +19,15 @@ type TAdminLayout = {
 const AdminLayout: FC<TAdminLayout> = (props) => {
   const { children } = props;
   // router
-  const router = useRouter();
+  const navigate = useNavigate();
   // store hooks
   const { isUserLoggedIn } = useUser();
 
   useEffect(() => {
     if (isUserLoggedIn === false) {
-      router.push("/");
+      void navigate("/", { replace: true });
     }
-  }, [router, isUserLoggedIn]);
+  }, [navigate, isUserLoggedIn]);
 
   if (isUserLoggedIn === undefined) {
     return (

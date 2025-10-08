@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { observer } from "mobx-react";
-import Link from "next/link";
+import { Link } from "react-router";
 import useSWR from "swr";
 import { Loader as LoaderIcon } from "lucide-react";
 // types
@@ -128,7 +128,7 @@ const WorkspaceManagementPage = observer(() => {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Link href="/workspace/create" className={getButtonStyling("primary", "sm")}>
+                  <Link to="/workspace/create" className={getButtonStyling("primary", "sm")}>
                     Create workspace
                   </Link>
                 </div>

@@ -9,6 +9,7 @@ export default defineConfig({
     customExports: (out) => ({
       ...out,
       "./styles": "./dist/styles/index.css",
+      "./styles.css": "./dist/styles/index.css",
     }),
   },
   dts: true,

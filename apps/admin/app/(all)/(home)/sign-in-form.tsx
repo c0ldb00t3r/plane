@@ -1,7 +1,7 @@
 "use client";
 
 import { FC, useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 // plane internal packages
 import { API_BASE_URL, EAdminAuthErrorCodes, TAdminAuthErrorInfo } from "@plane/constants";
@@ -46,7 +46,7 @@ const defaultFromData: TFormData = {
 
 export const InstanceSignInForm: FC = () => {
   // search params
-  const searchParams = useSearchParams();
+  const [searchParams] = useSearchParams();
   const emailParam = searchParams.get("email") || undefined;
   const errorCode = searchParams.get("error_code") || undefined;
   const errorMessage = searchParams.get("error_message") || undefined;

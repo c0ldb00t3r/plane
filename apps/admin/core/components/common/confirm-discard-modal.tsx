@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
+import { Link } from "react-router";
 // headless ui
 import { Dialog, Transition } from "@headlessui/react";
 // ui
@@ -60,7 +60,7 @@ export const ConfirmDiscardModal: React.FC<Props> = (props) => {
                   <Button variant="neutral-primary" size="sm" onClick={handleClose}>
                     Keep editing
                   </Button>
-                  <Link href={onDiscardHref} className={getButtonStyling("primary", "sm")}>
+                  <Link to={onDiscardHref} className={getButtonStyling("primary", "sm")}>
                     Go back
                   </Link>
                 </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { FC, useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams } from "react-router-dom";
 // icons
 import { Eye, EyeOff } from "lucide-react";
 // plane internal packages
@@ -56,12 +56,13 @@ const defaultFromData: TFormData = {
 export const InstanceSetupForm: FC = (props) => {
   const {} = props;
   // search params
-  const searchParams = useSearchParams();
+  const [searchParams] = useSearchParams();
   const firstNameParam = searchParams.get("first_name") || undefined;
   const lastNameParam = searchParams.get("last_name") || undefined;
   const companyParam = searchParams.get("company") || undefined;
   const emailParam = searchParams.get("email") || undefined;
-  const isTelemetryEnabledParam = (searchParams.get("is_telemetry_enabled") === "True" ? true : false) || true;
+  const isTelemetryEnabledParam =
+    searchParams.get("is_telemetry_enabled") === "True" ? true : searchParams.get("is_telemetry_enabled") === "False" ? false : true;
   const errorCode = searchParams.get("error_code") || undefined;
   const errorMessage = searchParams.get("error_message") || undefined;
   // state

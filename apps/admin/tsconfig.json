@@ -1,21 +1,33 @@
 {
-  "extends": "@plane/typescript-config/nextjs.json",
+  "extends": "@plane/typescript-config/react-router.json",
   "compilerOptions": {
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
+    "plugins": [],
     "baseUrl": ".",
+    "module": "ES2022",
+    "moduleResolution": "Bundler",
+    "target": "ES2022",
+    "jsx": "react-jsx",
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "rootDirs": [".", "./.react-router/types"],
+    "types": ["node", "vite/client"],
+    "esModuleInterop": true,
+    "verbatimModuleSyntax": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
     "paths": {
       "@/app/*": ["app/*"],
       "@/*": ["core/*"],
-      "@/public/*": ["public/*"],
       "@/plane-admin/*": ["ce/*"],
       "@/styles/*": ["styles/*"]
     },
     "strictNullChecks": true
   },
-  "include": ["next-env.d.ts", "next.config.js", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "**/*",
+    "**/.server/**/*",
+    "**/.client/**/*",
+    ".react-router/types/**/*"
+  ],
   "exclude": ["node_modules"]
 }

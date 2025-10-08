@@ -3,7 +3,7 @@
 import React from "react";
 import { observer } from "mobx-react";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "react-router";
 import { useTheme as nextUseTheme } from "next-themes";
 // ui
 import { Button, getButtonStyling } from "@plane/propel/button";
@@ -11,8 +11,8 @@ import { resolveGeneralTheme } from "@plane/utils";
 // hooks
 import { useTheme } from "@/hooks/store";
 // icons
-import TakeoffIconLight from "/public/logos/takeoff-icon-light.svg";
-import TakeoffIconDark from "/public/logos/takeoff-icon-dark.svg";
+import takeoffIconLight from "@/app/assets/logos/takeoff-icon-light.svg?url";
+import takeoffIconDark from "@/app/assets/logos/takeoff-icon-dark.svg?url";
 
 export const NewUserPopup: React.FC = observer(() => {
   // hooks
@@ -31,7 +31,7 @@ export const NewUserPopup: React.FC = observer(() => {
             workspace.
           </div>
           <div className="flex items-center gap-4 pt-2">
-            <Link href="/workspace/create" className={getButtonStyling("primary", "sm")}>
+            <Link to="/workspace/create" className={getButtonStyling("primary", "sm")}>
               Create workspace
             </Link>
             <Button variant="neutral-primary" size="sm" onClick={toggleNewUserPopup}>
@@ -41,7 +41,7 @@ export const NewUserPopup: React.FC = observer(() => {
         </div>
         <div className="shrink-0 flex items-center justify-center">
           <Image
-            src={resolveGeneralTheme(resolvedTheme) === "dark" ? TakeoffIconDark : TakeoffIconLight}
+            src={resolveGeneralTheme(resolvedTheme) === "dark" ? takeoffIconDark : takeoffIconLight}
             height={80}
             width={80}
             alt="Plane icon"

@@ -2,7 +2,7 @@
 
 import { FC } from "react";
 import { observer } from "mobx-react";
-import { usePathname } from "next/navigation";
+import { useLocation } from "react-router";
 import { Menu, Settings } from "lucide-react";
 // icons
 import { Breadcrumbs } from "@plane/ui";
@@ -24,7 +24,7 @@ export const HamburgerToggle: FC = observer(() => {
 });
 
 export const AdminHeader: FC = observer(() => {
-  const pathName = usePathname();
+  const { pathname: pathName } = useLocation();
 
   const getHeaderTitle = (pathName: string) => {
     switch (pathName) {

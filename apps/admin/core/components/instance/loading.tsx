@@ -1,13 +1,12 @@
 import Image from "next/image";
 import { useTheme } from "next-themes";
-// assets
-import LogoSpinnerDark from "@/public/images/logo-spinner-dark.gif";
-import LogoSpinnerLight from "@/public/images/logo-spinner-light.gif";
+import logoSpinnerDark from "@/app/assets/images/logo-spinner-dark.gif?url";
+import logoSpinnerLight from "@/app/assets/images/logo-spinner-light.gif?url";
 
 export const InstanceLoading = () => {
   const { resolvedTheme } = useTheme();
 
-  const logoSrc = resolvedTheme === "dark" ? LogoSpinnerLight : LogoSpinnerDark;
+  const logoSrc = resolvedTheme === "dark" ? logoSpinnerLight : logoSpinnerDark;
 
   return (
     <div className="flex items-center justify-center">

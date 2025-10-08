@@ -1,0 +1,48 @@
+server {
+    listen 80;
+    server_name _;
+
+    # Base path for admin app (e.g., /god-mode)
+    set $admin_base $NEXT_PUBLIC_ADMIN_BASE_PATH;
+
+    # Use Docker's embedded DNS resolver for upstream container names (e.g., api)
+    resolver 127.0.0.11 ipv6=off valid=10s;
+
+    # Serve static assets
+    root /usr/share/nginx/html;
+
+    # Proxy API to backend
+    location /api/ {
+        # Use existing public envs for API origin and base path
+        set $api_origin $NEXT_PUBLIC_API_BASE_URL;
+        set $api_base $NEXT_PUBLIC_API_BASE_PATH;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        # If API_BASE_PATH is /api keep as-is, otherwise rewrite
+        if ($api_base != "/api") {
+            rewrite ^/api/(.*)$ $api_base/$1 break;
+        }
+
+        proxy_pass $api_origin;
+    }
+
+    # SPA fallback for all client routes under base path
+    location ~* ^$admin_base/.*$ {
+        try_files $uri $uri/ $admin_base/index.html =404;
+    }
+
+    # Root path should redirect to base path index.html (optional)
+    location = / {
+        try_files /index.html =404;
+    }
+
+    # Default: serve files with SPA fallback
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
+
+

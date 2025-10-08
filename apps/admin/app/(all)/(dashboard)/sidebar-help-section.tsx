@@ -2,7 +2,7 @@
 
 import { FC, useState, useRef } from "react";
 import { observer } from "mobx-react";
-import Link from "next/link";
+import { Link } from "react-router";
 import { ExternalLink, FileText, HelpCircle, MoveLeft } from "lucide-react";
 import { Transition } from "@headlessui/react";
 // plane internal packages
@@ -107,7 +107,7 @@ export const AdminSidebarHelpSection: FC = observer(() => {
               {helpOptions.map(({ name, Icon, href }) => {
                 if (href)
                   return (
-                    <Link href={href} key={name} target="_blank">
+                    <Link to={href} key={name} target="_blank">
                       <div className="flex items-center gap-x-2 rounded px-2 py-1 text-xs hover:bg-custom-background-80">
                         <div className="grid flex-shrink-0 place-items-center">
                           <Icon className="h-3.5 w-3.5 text-custom-text-200" size={14} />

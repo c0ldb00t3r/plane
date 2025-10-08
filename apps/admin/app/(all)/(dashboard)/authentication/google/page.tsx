@@ -9,8 +9,7 @@ import { Loader, ToggleSwitch, setPromiseToast } from "@plane/ui";
 import { AuthenticationMethodCard } from "@/components/authentication/authentication-method-card";
 // hooks
 import { useInstance } from "@/hooks/store";
-// icons
-import GoogleLogo from "@/public/logos/google-logo.svg";
+import googleLogo from "@/app/assets/logos/google-logo.svg?url";
 // local components
 import { InstanceGoogleConfigForm } from "./form";
 
@@ -62,7 +61,7 @@ const InstanceGoogleAuthenticationPage = observer(() => {
             name="Google"
             description="Allow members to login or sign up to plane with their Google
             accounts."
-            icon={<Image src={GoogleLogo} height={24} width={24} alt="Google Logo" />}
+            icon={<Image src={googleLogo} height={24} width={24} alt="Google Logo" />}
             config={
               <ToggleSwitch
                 value={Boolean(parseInt(enableGoogleConfig))}

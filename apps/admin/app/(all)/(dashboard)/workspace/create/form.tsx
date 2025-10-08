@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { Link, useNavigate } from "react-router";
 import { Controller, useForm } from "react-hook-form";
 // plane imports
 import { WEB_BASE_URL, ORGANIZATION_SIZE, RESTRICTED_URLS } from "@plane/constants";
@@ -16,7 +15,7 @@ const instanceWorkspaceService = new InstanceWorkspaceService();
 
 export const WorkspaceCreateForm = () => {
   // router
-  const router = useRouter();
+  const navigate = useNavigate();
   // states
   const [slugError, setSlugError] = useState(false);
   const [invalidSlug, setInvalidSlug] = useState(false);
@@ -51,7 +50,7 @@ export const WorkspaceCreateForm = () => {
                 title: "Success!",
                 message: "Workspace created successfully.",
               });
-              router.push(`/workspace`);
+              void navigate(`/workspace`, { replace: true });
             })
             .catch(() => {
               setToast({
@@ -202,7 +201,7 @@ export const WorkspaceCreateForm = () => {
         >
           {isSubmitting ? "Creating workspace" : "Create workspace"}
         </Button>
-        <Link className={getButtonStyling("neutral-primary", "sm")} href="/workspace">
+        <Link className={getButtonStyling("neutral-primary", "sm")} to="/workspace">
           Go back
         </Link>
       </div>

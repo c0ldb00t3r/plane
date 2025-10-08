@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "react-router";
 import { Tooltip } from "@plane/propel/tooltip";
 
 type Props = {
@@ -18,7 +18,7 @@ export const BreadcrumbLink: React.FC<Props> = (props) => {
           {href ? (
             <Link
               className="flex items-center gap-1 text-sm font-medium text-custom-text-300 hover:text-custom-text-100"
-              href={href}
+              to={href}
             >
               {icon && (
                 <div className="flex h-5 w-5 items-center justify-center overflow-hidden !text-[1rem]">{icon}</div>

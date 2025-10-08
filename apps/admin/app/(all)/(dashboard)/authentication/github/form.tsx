@@ -2,7 +2,7 @@
 
 import { FC, useState } from "react";
 import { isEmpty } from "lodash-es";
-import Link from "next/link";
+import { Link } from "react-router";
 import { useForm } from "react-hook-form";
 import { Monitor } from "lucide-react";
 // plane internal packages
@@ -204,7 +204,7 @@ export const InstanceGithubConfigForm: FC<Props> = (props) => {
                   {isSubmitting ? "Saving..." : "Save changes"}
                 </Button>
                 <Link
-                  href="/authentication"
+                  to="/authentication"
                   className={cn(getButtonStyling("neutral-primary", "md"), "font-medium")}
                   onClick={handleGoBack}
                 >

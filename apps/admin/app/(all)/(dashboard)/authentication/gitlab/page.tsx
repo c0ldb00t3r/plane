@@ -9,8 +9,7 @@ import { Loader, ToggleSwitch, setPromiseToast } from "@plane/ui";
 import { AuthenticationMethodCard } from "@/components/authentication/authentication-method-card";
 // hooks
 import { useInstance } from "@/hooks/store";
-// icons
-import GitlabLogo from "@/public/logos/gitlab-logo.svg";
+import gitlabLogo from "@/app/assets/logos/gitlab-logo.svg?url";
 // local components
 import { InstanceGitlabConfigForm } from "./form";
 
@@ -61,7 +60,7 @@ const InstanceGitlabAuthenticationPage = observer(() => {
           <AuthenticationMethodCard
             name="GitLab"
             description="Allow members to login or sign up to plane with their GitLab accounts."
-            icon={<Image src={GitlabLogo} height={24} width={24} alt="GitLab Logo" />}
+            icon={<Image src={gitlabLogo} height={24} width={24} alt="GitLab Logo" />}
             config={
               <ToggleSwitch
                 value={Boolean(parseInt(enableGitlabConfig))}

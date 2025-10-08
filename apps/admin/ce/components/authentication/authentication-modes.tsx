@@ -18,13 +18,12 @@ import { GoogleConfiguration } from "@/components/authentication/google-config";
 import { PasswordLoginConfiguration } from "@/components/authentication/password-config-switch";
 // plane admin components
 import { UpgradeButton } from "@/plane-admin/components/common";
-// assets
-import githubLightModeImage from "@/public/logos/github-black.png";
-import githubDarkModeImage from "@/public/logos/github-white.png";
-import GitlabLogo from "@/public/logos/gitlab-logo.svg";
-import GoogleLogo from "@/public/logos/google-logo.svg";
-import OIDCLogo from "@/public/logos/oidc-logo.svg";
-import SAMLLogo from "@/public/logos/saml-logo.svg";
+import githubLightModeImage from "@/app/assets/logos/github-black.png?url";
+import githubDarkModeImage from "@/app/assets/logos/github-white.png?url";
+import gitlabLogo from "@/app/assets/logos/gitlab-logo.svg?url";
+import googleLogo from "@/app/assets/logos/google-logo.svg?url";
+import oidcLogo from "@/app/assets/logos/oidc-logo.svg?url";
+import samlLogo from "@/app/assets/logos/saml-logo.svg?url";
 
 export type TAuthenticationModeProps = {
   disabled: boolean;
@@ -56,7 +55,7 @@ export const getAuthenticationModes: (props: TGetBaseAuthenticationModeProps) =>
     key: "google",
     name: "Google",
     description: "Allow members to log in or sign up for Plane with their Google accounts.",
-    icon: <Image src={GoogleLogo} height={20} width={20} alt="Google Logo" />,
+  icon: <Image src={googleLogo} height={20} width={20} alt="Google Logo" />,
     config: <GoogleConfiguration disabled={disabled} updateConfig={updateConfig} />,
   },
   {
@@ -65,7 +64,7 @@ export const getAuthenticationModes: (props: TGetBaseAuthenticationModeProps) =>
     description: "Allow members to log in or sign up for Plane with their GitHub accounts.",
     icon: (
       <Image
-        src={resolveGeneralTheme(resolvedTheme) === "dark" ? githubDarkModeImage : githubLightModeImage}
+  src={resolveGeneralTheme(resolvedTheme) === "dark" ? githubDarkModeImage : githubLightModeImage}
         height={20}
         width={20}
         alt="GitHub Logo"
@@ -77,14 +76,14 @@ export const getAuthenticationModes: (props: TGetBaseAuthenticationModeProps) =>
     key: "gitlab",
     name: "GitLab",
     description: "Allow members to log in or sign up to plane with their GitLab accounts.",
-    icon: <Image src={GitlabLogo} height={20} width={20} alt="GitLab Logo" />,
+  icon: <Image src={gitlabLogo} height={20} width={20} alt="GitLab Logo" />,
     config: <GitlabConfiguration disabled={disabled} updateConfig={updateConfig} />,
   },
   {
     key: "oidc",
     name: "OIDC",
     description: "Authenticate your users via the OpenID Connect protocol.",
-    icon: <Image src={OIDCLogo} height={22} width={22} alt="OIDC Logo" />,
+  icon: <Image src={oidcLogo} height={22} width={22} alt="OIDC Logo" />,
     config: <UpgradeButton />,
     unavailable: true,
   },
@@ -92,7 +91,7 @@ export const getAuthenticationModes: (props: TGetBaseAuthenticationModeProps) =>
     key: "saml",
     name: "SAML",
     description: "Authenticate your users via the Security Assertion Markup Language protocol.",
-    icon: <Image src={SAMLLogo} height={22} width={22} alt="SAML Logo" className="pl-0.5" />,
+  icon: <Image src={samlLogo} height={22} width={22} alt="SAML Logo" className="pl-0.5" />,
     config: <UpgradeButton />,
     unavailable: true,
   },

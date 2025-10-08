@@ -27,7 +27,7 @@
     "@plane/types": "workspace:*",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
-    "isomorphic-dompurify": "^2.16.0",
+    "dompurify": "^3.0.9",
     "lodash-es": "catalog:",
     "lucide-react": "catalog:",
     "react": "catalog:",
@@ -38,7 +38,7 @@
     "@plane/eslint-config": "workspace:*",
     "@plane/typescript-config": "workspace:*",
     "@types/lodash-es": "catalog:",
-    "@types/node": "^22.5.4",
+    "@types/node": "catalog:",
     "@types/react": "catalog:",
     "tsdown": "catalog:",
     "typescript": "catalog:"

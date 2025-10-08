@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "react-router";
 import { KeyRound, Mails } from "lucide-react";
 // plane packages
 import { SUPPORT_EMAIL, EAdminAuthErrorCodes, TAdminAuthErrorInfo } from "@plane/constants";
@@ -12,11 +12,10 @@ import { GithubConfiguration } from "@/components/authentication/github-config";
 import { GitlabConfiguration } from "@/components/authentication/gitlab-config";
 import { GoogleConfiguration } from "@/components/authentication/google-config";
 import { PasswordLoginConfiguration } from "@/components/authentication/password-config-switch";
-// images
-import githubLightModeImage from "@/public/logos/github-black.png";
-import githubDarkModeImage from "@/public/logos/github-white.png";
-import GitlabLogo from "@/public/logos/gitlab-logo.svg";
-import GoogleLogo from "@/public/logos/google-logo.svg";
+import githubLightModeImage from "@/app/assets/logos/github-black.png?url";
+import githubDarkModeImage from "@/app/assets/logos/github-white.png?url";
+import gitlabLogo from "@/app/assets/logos/gitlab-logo.svg?url";
+import googleLogo from "@/app/assets/logos/google-logo.svg?url";
 
 export enum EErrorAlertType {
   BANNER_ALERT = "BANNER_ALERT",
@@ -59,7 +58,7 @@ const errorCodeMessages: {
     message: () => (
       <div>
         Admin user already exists.&nbsp;
-        <Link className="underline underline-offset-4 font-medium hover:font-bold transition-all" href={`/admin`}>
+        <Link className="underline underline-offset-4 font-medium hover:font-bold transition-all" to={`/admin`}>
           Sign In
         </Link>
         &nbsp;now.
@@ -71,7 +70,7 @@ const errorCodeMessages: {
     message: () => (
       <div>
         Admin user does not exist.&nbsp;
-        <Link className="underline underline-offset-4 font-medium hover:font-bold transition-all" href={`/admin`}>
+        <Link className="underline underline-offset-4 font-medium hover:font-bold transition-all" to={`/admin`}>
           Sign In
         </Link>
         &nbsp;now.
@@ -135,7 +134,7 @@ export const getBaseAuthenticationModes: (props: TGetBaseAuthenticationModeProps
     key: "google",
     name: "Google",
     description: "Allow members to log in or sign up for Plane with their Google accounts.",
-    icon: <Image src={GoogleLogo} height={20} width={20} alt="Google Logo" />,
+  icon: <Image src={googleLogo} height={20} width={20} alt="Google Logo" />,
     config: <GoogleConfiguration disabled={disabled} updateConfig={updateConfig} />,
   },
   {
@@ -144,7 +143,7 @@ export const getBaseAuthenticationModes: (props: TGetBaseAuthenticationModeProps
     description: "Allow members to log in or sign up for Plane with their GitHub accounts.",
     icon: (
       <Image
-        src={resolveGeneralTheme(resolvedTheme) === "dark" ? githubDarkModeImage : githubLightModeImage}
+  src={resolveGeneralTheme(resolvedTheme) === "dark" ? githubDarkModeImage : githubLightModeImage}
         height={20}
         width={20}
         alt="GitHub Logo"
@@ -156,7 +155,7 @@ export const getBaseAuthenticationModes: (props: TGetBaseAuthenticationModeProps
     key: "gitlab",
     name: "GitLab",
     description: "Allow members to log in or sign up to plane with their GitLab accounts.",
-    icon: <Image src={GitlabLogo} height={20} width={20} alt="GitLab Logo" />,
+  icon: <Image src={gitlabLogo} height={20} width={20} alt="GitLab Logo" />,
     config: <GitlabConfiguration disabled={disabled} updateConfig={updateConfig} />,
   },
 ];

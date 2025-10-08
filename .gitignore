@@ -14,11 +14,9 @@ node_modules
 # Next.js
 /.next/
 /out/
-
-# Production
 /build
 dist/
-out/
+.react-router/
 
 # Misc
 .DS_Store
@@ -101,3 +99,5 @@ dev-editor
 storybook-static
 
 CLAUDE.md
+
+build/

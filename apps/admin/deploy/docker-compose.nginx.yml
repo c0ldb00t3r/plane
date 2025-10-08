@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  admin-static:
+    image: nginx:1.27-alpine
+    container_name: plane-admin-static
+    ports:
+      - "3001:80"
+    environment:
+      # Change these to match your local setup
+      NEXT_PUBLIC_API_BASE_URL: http://127.0.0.1:8000
+      NEXT_PUBLIC_API_BASE_PATH: /api
+      NEXT_PUBLIC_ADMIN_BASE_PATH: /god-mode
+      # enable envsubst for templates (supported by official nginx image)
+      NGINX_ENVSUBST_OUTPUT_DIR: /etc/nginx/conf.d
+      NGINX_ENVSUBST_TEMPLATE_DIR: /etc/nginx/templates
+    volumes:
+      # Serve the built static assets
+      - ../build/client:/usr/share/nginx/html:ro
+      # Nginx config template with SPA fallback and API proxy
+      - ./nginx.default.conf.template:/etc/nginx/templates/default.conf.template:ro
+    restart: unless-stopped
+
+
